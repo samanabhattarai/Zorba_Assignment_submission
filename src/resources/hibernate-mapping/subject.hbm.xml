@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name ="com.hibernateaggregation.entity.Subject" table = "subject">
+        <id name ="subjectId">
+            <generator class = "increment"/>
+        </id>
+
+        <property name ="subName" column ="sub_name" length = "255" type ="java.lang.String"/>
+
+        <many-to-one name = "student" class = "com.hibernateaggregation.entity.Student">
+            <column name ="stud_id"/>
+
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>
