@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Connection Pool size-->
+        <property name="connection.pool_size">5</property>
+
+        <!-- MYSQL Driver class name  -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
+        <!--Database Url-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_1015</property>
+
+        <!--Database username-->
+        <property name="hibernate.connection.username">root</property>
+
+        <!--Database password-->
+        <property name="hibernate.connection.password">root</property>
+
+        <!--Helps to convert ORM/HQL to corresponding SQL-->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!--Post conversion of SQL query, need to display the query in console-->
+        <property name="show_sql">true</property>
+
+        <!--Which will indicate on start of server we are going create all the entity (table)
+          1. Create -> all time it will drop the existing table and recreate
+          2. Update -> once created but every time it will update-->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- Set current session context -->
+        <property name="current_session_context_class">thread</property>
+
+        <!--Helps to configure the mapping file to hibernate-->
+        <mapping resource="hibernate-mapping/students.hbm.xml"/>
+        <mapping resource="hibernate-mapping/address.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name ="com.hibernateaggregation.entity.Student" table = "student">
+        <id name ="studId" column ="stud_id">
+            <generator class ="increment"/>
+        </id>
+
+        <property name = "studName" column ="stud_name" length = "255"/>
+        <property name ="studRollNumber" column ="stud_rollnumber" length="12"/>
+
+        <set name ="subject" table ="subject"
+            cascade ="all" lazy="true" inverse="true">
+            <key>
+                <column name="stud_id"/>
+            </key>
+            <one-to-many class ="com.hibernateaggregation.entity.Subject"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name ="com.hibernateproject.entity.Address" table = "address">
+
+        <id name ="addressId" column = "address_id">
+            <generator class = "increment"/>
+        </id>
+
+        <property name ="street" column ="address_street" length = "255" type ="java.lang.String"/>
+        <property name ="city" column ="address_city" length = "255" type ="java.lang.String"/>
+        <property name ="state" column ="address_state" length = "255" type ="java.lang.String"/>
+
+        <property name ="zipcode" column ="address_zipcode" length ="12"/>
+
+        <set name = "students" table ="students"
+        cascade ="all" lazy ="true" inverse ="true">
+            <key>
+                <column name= "address_Id"/>
+            </key>
+
+        <one-to-many class = "com.hibernateproject.entity.Students"/>
+        </set>
+
+    </class>
+</hibernate-mapping>
+

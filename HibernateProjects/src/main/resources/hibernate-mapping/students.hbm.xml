@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hibernateproject.entity.Students" table="students">
+        <id name="studId" column="stud_id">
+            <generator class="increment"/>
+        </id>
+        <property name="studName" column="stud_name" length="255"/>
+        <property name="studRollNumber" column="stud_rollno" length="255"/>
+
+        <!--Many-To-One Relation-->
+        <many-to-one name="addresses" cascade="all"
+                     class="com.hibernateproject.entity.Address">
+            <column name="address_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
